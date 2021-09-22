@@ -9,7 +9,8 @@ export const NavBarData = [
     {
         id: uuidv4(),
         title: "Search",
-        url: "/search"
+        url: "/searchAdmin"
+        /*url: "/search"*/
     },
     {
         id: uuidv4(),

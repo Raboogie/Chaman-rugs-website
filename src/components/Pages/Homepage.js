@@ -1,4 +1,4 @@
-import {HomePageImageData} from "../data/HomePageImageData";
+import {HomePageImageData} from "../Data/HomePageImageData";
 import {useState} from "react";
 import "./Homepage.css";
 
@@ -13,7 +13,7 @@ const Homepage = () => {
             </section>
             <section>
                 <div className="homepage-greetings">
-                    <p>Chaman Antique Rugs is now in its 2nd Generation of business in the wholesale and trade Handmade
+                    <p>Chaman Antique Rugs is in its 2nd Generation of business in the wholesale and trade Handmade
                         Oriental Rug Industry.
                         With over 30 years experience in this field, a of team of World renowned experts, specialist and
                         carpets consultants are
