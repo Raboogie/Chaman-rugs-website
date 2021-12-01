@@ -35,15 +35,26 @@ const UploadForm = () => {
     }
 
     const changeHandler = (e) => {
-        let selected = e.target.files[0];
+        //let selected = e.target.files[0];
 
-        if (selected && types.includes(selected.type)) {
+        // new work start
+        for (let i = 0; i < e.target.files.length ; i++) {
+            const newImages = e.target.files[i]
+            //setImageFile((imageFile) => [...imageFile, newImages]);
+            setImageFile(newImages);
+        }
+        // new work end
+
+        /*if (selected && types.includes(selected.type)) {
 
             if ((carpetValues.carpetNum !== "") && (carpetValues.carpetType !== "")) {
-                setImageFile(selected);
-                setError('');
+                ///
+                //setImageFile(selected);
+                //setError('');
+                ///
+
                 // const collectionRef = projectFirestore.firestore().collection('Carpets');
-                /*collectionRef.add({
+                /!*collectionRef.add({
                     carpetNum: carpetValues.carpetNum,
                     carpetType: carpetValues.carpetType,
                     width: parseInt(carpetValues.width),
@@ -53,7 +64,7 @@ const UploadForm = () => {
 
                 }).catch((error) => {
                     console.error("Error writing document: ", error);
-                });*/
+                });*!/
             } else {
                 setImageFile(null);
                 setError('Please add a carpet number and Type');
@@ -61,7 +72,7 @@ const UploadForm = () => {
         } else {
             setImageFile(null);
             setError('Please select an image imageFile (png or jpeg)');
-        }
+        }*/
     }
 
     return (

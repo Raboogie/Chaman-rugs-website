@@ -8,35 +8,40 @@ const useStorage = (file, carpetValues) => {
     const [url, setUrl] = useState(null);
 
     useEffect(() => {
-        // references
-        const storageRef = projectStorage.ref(`images/${file.name}`);
-        const collectionRef = projectFirestore.firestore().collection('Carpets');
-        //const collectionRef = projectFirestore.collection('images'); // was used for firegram
+        ////
+        file.map((image) => {
+            // references
+            const storageRef = projectStorage.ref(`images/${file.name}`);
+            const collectionRef = projectFirestore.firestore().collection('Carpets');
+            //const collectionRef = projectFirestore.collection('images'); // was used for firegram
 
-        storageRef.put(file).on('state_changed', (snap) => {
-            let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
-            setProgress(percentage);
-        }, (err) => {
-            setError(err);
-        }, async () => {
-            const url = await storageRef.getDownloadURL();
-            const createdAt = timestamp();
-            //await collectionRef.add({url, createdAt});
-            await collectionRef.add({
-                carpetNum: carpetValues.carpetNum,
-                carpetType: carpetValues.carpetType,
-                width: parseInt(carpetValues.width),
-                height: parseInt(carpetValues.height),
-                createdAt,
-                url
-            }).then(() => {
-                console.log("Document successfully written!");
+            storageRef.put(file).on('state_changed', (snap) => {
+                let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;
+                setProgress(percentage);
+            }, (err) => {
+                setError(err);
+            }, async () => {
+                const url = await storageRef.getDownloadURL();
+                const createdAt = timestamp();
+                //await collectionRef.add({url, createdAt});
+                await collectionRef.add({
+                    carpetNum: carpetValues.carpetNum,
+                    carpetType: carpetValues.carpetType,
+                    width: parseInt(carpetValues.width),
+                    height: parseInt(carpetValues.height),
+                    createdAt,
+                    url
+                }).then(() => {
+                    console.log("Document successfully written!");
 
-            }).catch((error) => {
-                console.error("Error writing document: ", error);
+                }).catch((error) => {
+                    console.error("Error writing document: ", error);
+                });
+                setUrl(url);
             });
-            setUrl(url);
-        });
+        })
+        ////
+
     }, [file]);
 
     return { progress, url, error };

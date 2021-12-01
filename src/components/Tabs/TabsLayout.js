@@ -1,6 +1,7 @@
 import React from 'react';import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import UploadForm from "../Forms/UploadForm";
+import SearchForm from "../Forms/SearchForm";
 
 
 function TabsLayout(props) {
@@ -37,9 +38,9 @@ function TabsLayout(props) {
                     </p>
                 </TabPanel>
                 <TabPanel>
-                    <p><b>Search Carpet number</b></p>
+                    <p><b>Search Carpet by number</b></p>
                     <section>
-
+                        <SearchForm/>
                     </section>
                 </TabPanel>
                 <TabPanel>
