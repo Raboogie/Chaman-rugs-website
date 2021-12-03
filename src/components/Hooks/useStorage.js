@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { projectStorage, timestamp } from "../../Firebase/config";
-import projectFirestore from '../../Firebase/config';
+import { projectStorage, timestamp, projectFirestore } from "../../Firebase/config";
 
 const useStorage = (file, carpetValues) => {
     const [progress, setProgress] = useState(0);
@@ -9,11 +8,10 @@ const useStorage = (file, carpetValues) => {
 
     useEffect(() => {
         ////
-        file.map((image) => {
+        file.map((file) => {
             // references
             const storageRef = projectStorage.ref(`images/${file.name}`);
-            const collectionRef = projectFirestore.firestore().collection('Carpets');
-            //const collectionRef = projectFirestore.collection('images'); // was used for firegram
+            const collectionRef = projectFirestore.collection('Carpets');
 
             storageRef.put(file).on('state_changed', (snap) => {
                 let percentage = (snap.bytesTransferred / snap.totalBytes) * 100;

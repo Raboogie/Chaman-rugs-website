@@ -4,8 +4,8 @@ import ProgressBar from "../ProgressBar";
 
 
 const UploadForm = () => {
-    const [imageFile, setImageFile] = useState(null);
-    const [error, setError] = useState(null);
+    const [imageFile, setImageFile] = useState([]);
+    const [error, setError] = useState();
 
     const types = ['image/png', 'image/jpeg'];
 
@@ -34,45 +34,23 @@ const UploadForm = () => {
         setCarpetValues({...carpetValues, height: e.target.value});
     }
 
-    const changeHandler = (e) => {
-        //let selected = e.target.files[0];
-
-        // new work start
+    const uploadChangeHandler = (e) => {
         for (let i = 0; i < e.target.files.length ; i++) {
             const newImages = e.target.files[i]
-            //setImageFile((imageFile) => [...imageFile, newImages]);
-            setImageFile(newImages);
-        }
-        // new work end
 
-        /*if (selected && types.includes(selected.type)) {
-
-            if ((carpetValues.carpetNum !== "") && (carpetValues.carpetType !== "")) {
-                ///
-                //setImageFile(selected);
-                //setError('');
-                ///
-
-                // const collectionRef = projectFirestore.firestore().collection('Carpets');
-                /!*collectionRef.add({
-                    carpetNum: carpetValues.carpetNum,
-                    carpetType: carpetValues.carpetType,
-                    width: parseInt(carpetValues.width),
-                    height: parseInt(carpetValues.height)
-                }).then(() => {
-                    console.log("Document successfully written!");
-
-                }).catch((error) => {
-                    console.error("Error writing document: ", error);
-                });*!/
+            if (newImages && types.includes(newImages.type)){
+                if ((carpetValues.carpetNum !== "") && (carpetValues.carpetType !== "")) {
+                    setImageFile((prevState) => [...prevState, newImages]);
+                    setError('');
+                } else {
+                    setImageFile(null);
+                    setError('Please add a carpet number and Type');
+                }
             } else {
                 setImageFile(null);
-                setError('Please add a carpet number and Type');
+                setError('Please select an image imageFile (png or jpeg)');
             }
-        } else {
-            setImageFile(null);
-            setError('Please select an image imageFile (png or jpeg)');
-        }*/
+        }
     }
 
     return (
@@ -97,7 +75,7 @@ const UploadForm = () => {
                 <form className="image-form">
                     <p>Upload images</p>
                     <label className="image-label">
-                        <input type="file" multiple onChange={changeHandler}/>
+                        <input type="file" multiple onChange={uploadChangeHandler}/>
                         <span>+</span>
                     </label>
                     <div className="output">

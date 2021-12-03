@@ -9,7 +9,6 @@ const Homepage = () => {
     return (
         <>
             <section className="homepage-banner">
-
             </section>
             <section>
                 <div className="homepage-greetings">
