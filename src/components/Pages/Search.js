@@ -88,8 +88,6 @@ const Search = () => {
         } else {
             setIsAdmin(false);
         }*/
-
-
     };
 
     return(

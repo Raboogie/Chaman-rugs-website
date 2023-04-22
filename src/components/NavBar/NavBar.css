@@ -3,16 +3,24 @@
     /*background-color: #61dafb;*/
     background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
     color:white;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*display: grid;
+    grid-template-columns: 1fr 1fr;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;;
 }
 
 .nav-bar-menu ul {
     /*padding: 0 0 0 200px;*/
-    display: grid;
+    /*display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    padding-top: 5px;
+    padding-top: 5px;*/
+    display: flex;
+    justify-content: right;
+    align-items: center;
 
 }
 

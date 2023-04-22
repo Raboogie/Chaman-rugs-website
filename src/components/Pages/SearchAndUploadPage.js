@@ -1,6 +1,5 @@
 import React from 'react';
 import fire from "../../Firebase/config";
-import UploadForm from "../Forms/UploadForm";
 import TabsLayout from "../Tabs/TabsLayout";
 
 function SearchAndUploadPage(props) {
@@ -10,7 +9,7 @@ function SearchAndUploadPage(props) {
     };
 
     return (
-        <div>
+        <div className="search">
             <div>
                 <h1 className="main-header">Admin Search and Upload</h1>
                 <button className="button-admin" onClick={handleSignOut}>LOGOUT</button>

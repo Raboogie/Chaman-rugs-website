@@ -8,6 +8,10 @@
     font-family: 'Nunito', sans-serif;
     background: azure;
 }
+.search {
+    background: #B8DFD8;
+   padding-top: 60px;
+}
 
 button {
     /*border: none;

@@ -1,14 +1,15 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import useFirestore from "./Hooks/useFirestore";
+import "./ImageGrid.css";
 
-function ImageGrid(props) {
+function ImageGrid(props) { // Props coming from SearchForm
     const { docs } = useFirestore("Carpets"); // Carpets is the name of the collection in firestore.
     let input = props.userVal;
     let arrOfCarpets = docs.filter(rugNum => rugNum.carpetNum === input);
 
     return (
-        <div>
+        <div className="img-grid">
             { arrOfCarpets && arrOfCarpets.map(doc => (
                 <motion.div className="img-wrap" key={doc.id}
                             layout

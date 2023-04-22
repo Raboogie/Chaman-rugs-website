@@ -11,8 +11,9 @@ const useFirestore = (collection) => {
             .onSnapshot((snap) => {
                 let documents =  [];
 
-                // store the data and id of each doc inside the array documents
+
                 snap.forEach(doc => {
+                    // store the data and id of each doc inside the array documents
                     documents.push({...doc.data(), id: doc.id});
                 });
                 setDocs(documents);
